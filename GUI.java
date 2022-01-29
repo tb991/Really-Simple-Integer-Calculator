@@ -56,7 +56,7 @@ public class GUI{
 			ent.setFont(new Font("Arial", Font.PLAIN, 30));
 			frame.add(ent);
 
-			this.addBtn(initX, (initY+5*ySpacing), 2*xSpacing + btnWidth, btnHeight, "PUSH");
+			this.addBtn(initX, (initY+5*ySpacing), 2*xSpacing + btnWidth, btnHeight, "EVAL");
 			this.addBtn(initX, (initY+6*ySpacing), 2*xSpacing + btnWidth, 2*btnHeight-initY, "CLEAR");
 			
 			this.addBtn(initX + 3*xSpacing, initY, initX + 1-(4*xSpacing), ySpacing + btnHeight, "ADD");
@@ -78,7 +78,6 @@ public class GUI{
 		width = (double)(w * windowWidth);
 		height = (double) (h * windowHeight);
 
-		//System.out.print(xLoc + " " + yLoc + " " + width + " " + height);
 		btn[btnCount] = new JButton(text);
 		btn[btnCount].setBounds((int)xLoc, (int)yLoc, (int)width, (int)height);
 		btn[btnCount].setBackground(Color.BLUE);;

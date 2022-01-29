@@ -4,7 +4,7 @@ public class Model {
    Integer A;
    Integer B;
    Integer out;
-   String op;
+   String op = "NULL";
    public static void main(String[] args) {
        /*
     test(1, 2, "ADD", 3);
@@ -77,7 +77,7 @@ public class Model {
    public void resetMemory(){
 
    }
-   int pushCount = 0;
+   String lastOp;
    public int exec(int optionalIn){
        int out;
         if (op.equals("ADD")){
@@ -92,8 +92,14 @@ public class Model {
         else if (op.equals("DIV")){
             out = div();
         }
-        else if (op.equals("PUSH")){
-            out = push(optionalIn);
+        else if (op.equals("EVAL")){
+            op = lastOp;
+            if (!op.equals("EVAL")){
+                out = exec(0);
+            }
+            else{
+                out = 0;
+            }
         }
         else if (op.equals("CLEAR")){
             resetMemory();
@@ -107,9 +113,10 @@ public class Model {
    boolean bSet = false;
    public boolean setOp(String c){
        boolean success = false;
-       String[] ops = {"ADD", "SUB", "MULT", "DIV", "PUSH", "CLEAR"};
+       String[] ops = {"ADD", "SUB", "MULT", "DIV", "EVAL", "CLEAR"};
         for (int i = 0; i < ops.length; i++){
                 if (c.equals(ops[i])){
+                    lastOp = op;
                     op = c;
                     success = true;
                 }
